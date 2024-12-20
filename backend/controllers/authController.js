@@ -10,7 +10,7 @@ const registerUser = async (req, res) => {
         if (userExits) return res.status(400).json({ message: 'User already exists' });
 
         const user = await User.create({ firstName, lastName, email, phone, password, passwordConfirm, acceptTerms });
-        res.status(201).json({ id: user.id, email: user.email })
+        res.status(201).json({ id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email, phone: user.phone })
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
